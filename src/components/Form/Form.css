@@ -1,0 +1,43 @@
+.custom-form {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 20px;
+    width: auto; 
+    max-width: 300px; /* Aumenta el ancho máximo */
+    background-color: #413b3c; /* Fondo claro */
+    padding: 20px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .custom-form input,
+  .custom-form select,
+  .custom-form button {
+    height: 20x;            
+    margin-bottom: 10px;    
+    box-sizing: border-box; 
+    border-radius: 5px; 
+  }
+
+  .custom-form input:focus,
+  .custom-form select:focus,
+  .custom-form button:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+    outline: none; /* Elimina el borde de enfoque predeterminado */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al enfocar */
+  }
+
+.custom-form input,
+.custom-form select {
+  width: 200px; /* Ancho fijo */
+  height: 40px; /* Alto fijo */
+  margin-bottom: 10px; /* Espacio entre los elementos */
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el tamaño total */
+  padding: 8px; /* Ajusta el padding según sea necesario */
+  border: 1px solid #ccc; /* Asegura que ambos elementos tengan el mismo borde */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}

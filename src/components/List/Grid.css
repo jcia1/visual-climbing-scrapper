@@ -1,0 +1,32 @@
+.gridHeaderItem {
+    color: white;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+
+    /* Texto blanco */
+    background-color: #413b3c; /* Fondo claro */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-left-width: 1px; 
+    border-right-width: 1px; 
+    border-bottom-width: 3px;
+    height: 4px;
+
+
+}
+
+.gridHeaderLeftSide {
+    border-top-left-radius: 10px; /* Curva el borde superior izquierdo */
+}
+
+.gridHeaderRigthSide {
+    border-top-right-radius: 10px; /* Curva el borde superior derecho */ 
+}
+.gridItem {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-left-width: 1px; 
+    border-right-width: 1px; 
+    border-bottom-width: 3px;
+}

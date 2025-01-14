@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  max-height: 80vh; /* Ajusta este valor según tus necesidades */
+  flex: 1; /* Permite que el contenido ocupe el espacio restante */
+  align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+  max-width: 800px; /* Ajusta el ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+.left-image {
+  display: flex;
+  width: 150px; /* Ajusta el ancho según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin-right: 20px; /* Ajusta el espacio entre la imagen y el contenido */
+  margin-left: 70px; /* Ajusta el espacio entre la imagen y el contenido */
+  margin-top: 40px; /* Ajusta el espacio entre la imagen y el contenido */
+}

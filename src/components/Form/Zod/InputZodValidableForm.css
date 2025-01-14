@@ -1,0 +1,15 @@
+.input-zod-validable-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-label {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.form-control {
+ display: flex;
+ justify-content: center;
+}

@@ -1,0 +1,48 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.centered-modal {
+  background-color: #f1f1f1;
+  border-radius: 7px;
+}
+
+.modal-content {
+  color: black;
+  text-align: center;
+  border-radius: 7px;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #413b3c; /* Fondo claro */
+  color: white; /* Para que el texto y el botón de cerrar sean visibles sobre el fondo negro */
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding: 10px; /* Añadir padding para un mejor espaciado */
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  color: white;
+  cursor: pointer;
+}
+  
+  .modal-header h3 {
+    margin: 10px
+  }

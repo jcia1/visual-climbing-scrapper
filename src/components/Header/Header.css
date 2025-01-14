@@ -1,0 +1,33 @@
+.nav-list {
+    list-style: none;
+    display: flex;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+    background-color: #413b3c; 
+  }
+  
+  .first-item {
+    color: white;
+    margin-right: 20px;
+    padding: 12px;
+    margin: 12px;
+    margin-right: auto;
+    font-size: 24px;
+  }
+  
+  .nav-item {
+    color: white;
+    margin-right: 20px;
+    padding: 12px;
+    margin: 12px;
+  }
+  
+  .nav-item a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav-item a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,22 @@
+.custom-button {
+    margin: 5px;
+    color:blue;
+    width: 48%; /* Ajusta el ancho de los botones */
+    height: 40px; /* Alto fijo */
+    background-color: #ff1900; /* Fondo azul */
+    color: white; /* Texto blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.custom-button:disabled {
+    margin: 5px;
+    color:black;
+    background-color: grey;
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Fondo azul oscuro al pasar el ratón */
+}
