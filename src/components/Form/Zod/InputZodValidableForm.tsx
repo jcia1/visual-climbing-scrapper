@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const InputZodValidableForm = ({ name, control, label, type, error }: Props) => {
-    console.log(error); // Agrega esto para verificar el contenido de error
+    console.log(error); 
 
     return (
         <div className='input-zod-validable-form'>
