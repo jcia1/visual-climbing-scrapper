@@ -1,5 +1,5 @@
 import React from "react";
-import { Controller } from "react-hook-form";
+import { Controller, FieldErrors } from "react-hook-form";
 import './InputZodValidableForm.css';
 
 interface Props {
@@ -7,11 +7,11 @@ interface Props {
     control: any;
     label: string;
     type: string;
-    error?: any;
+    error?: FieldErrors;
 }
 
 export const InputZodValidableForm = ({ name, control, label, type, error }: Props) => {
-    console.log(error); 
+    console.log(error);
 
     return (
         <div className='input-zod-validable-form'>
@@ -30,7 +30,11 @@ export const InputZodValidableForm = ({ name, control, label, type, error }: Pro
                     />
                 )}
             />
-            {error && <div className="invalid-feedback">{error.message}</div>}
+            {error && error[name] && (
+                <div className="invalid-feedback">
+                    {error[name].message.toString()}
+                </div>
+            )}
         </div>
     );
 }

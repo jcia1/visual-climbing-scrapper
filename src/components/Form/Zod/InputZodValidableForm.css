@@ -12,4 +12,11 @@
 .form-control {
  display: flex;
  justify-content: center;
+ width: auto; 
+ min-width: 300px; 
+ max-width: 500px; 
+}
+
+.invalid-feedback {
+    color:red
 }

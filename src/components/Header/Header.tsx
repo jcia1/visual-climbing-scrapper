@@ -2,15 +2,29 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import './Header.css'; 
 import Modal from '../Modal/Modal';
 import { refInHeader } from '../../types';
+import { LogInForm } from '../Form/Zod/LogIn/LogInForm';
+import { SignInForm } from '../Form/Zod/SignIn/SignInForm';
 
 interface Props {
 
   title : string,
   refs : refInHeader,
-  signInForm: ReactElement
 }
 
-export const Header = ({title,refs,signInForm}: Props) => {
+type keyToForm = {
+  key: number,
+  form: ReactElement
+}
+
+const formIndex: keyToForm []  = 
+[
+  {key:1, form: <SignInForm/>},
+  {key:2, form: <LogInForm/>}
+]
+
+
+
+export const Header = ({title,refs}: Props) => {
 
   const [render, setRender] =  useState<number>(undefined)
 
@@ -37,11 +51,15 @@ export const Header = ({title,refs,signInForm}: Props) => {
           <ul className="nav-list">
             <li className="first-item"><a>{title}</a></li>
             {
-              refs.map((ref,index) => <li className="nav-item">< a href="#home" onClick={(e) => 
+              refs.map((ref,index) => <li className="nav-item">< a href={"#home"+index} onClick={(e) => 
                 {
                   e.preventDefault();
                   setRender(index);
-                }}>{ref.modalTitle}</a>{ref.isModalOpen && <Modal signInForm = {signInForm} closeModal={() => setRender(index)}/>}</li>)
+                }}>{ref.modalTitle}</a>{ref.isModalOpen && 
+                <Modal title = {ref.modalTitle} signInForm = {
+                  formIndex.find(formToKey => formToKey.key === ref.key).form
+                }
+                closeModal={() => setRender(index)}/>}</li>)
             }
           </ul>
         </nav>

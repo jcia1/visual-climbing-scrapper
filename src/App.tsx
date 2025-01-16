@@ -55,6 +55,9 @@ function App() {
   // Sign in modal.
   const [isSignInOpen,setSignInOpen] = useState(false)
 
+  // Sign in modal.
+  const [isLoginOpen,setLoginOpen] = useState(false)
+
   // Si se pulsa el boton de filtrado de Location.
   useEffect(() => {
 
@@ -212,7 +215,12 @@ function App() {
  
       {/* -- Header-- */}
       <div>
-        <Header signInForm={<SignInForm/>} title = '8a.bro' refs = {[{modalTitle : 'Sign in', isModalOpen : isSignInOpen, setIsModalOpen : setSignInOpen}]}/>
+        <Header title = '8a.bro' refs = {
+          [
+            {key: 1,modalTitle : 'Sign in', isModalOpen : isSignInOpen, setIsModalOpen : setSignInOpen},
+            {key: 2, modalTitle : 'Log in', isModalOpen : isLoginOpen, setIsModalOpen : setLoginOpen}
+          ]
+          }/>
       </div>
 
       <div style={{ display: 'flex' }}>
