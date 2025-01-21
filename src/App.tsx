@@ -11,7 +11,7 @@ import axios from 'axios';
 import { grados, headersForListGrid, items, optionsPerName } from './data';
 import { KeyValueStrType } from './types';
 import Header from './components/Header/Header';
-import { SignInForm } from './components/Form/Zod/SignIn/SignInForm';
+import { GlobalProvider } from './context/global.context';
 
 function App() {
 
@@ -53,10 +53,10 @@ function App() {
   const [handleLocationFilter, setHandleLocationFilter] = useState<boolean>(false)
 
   // Sign in modal.
-  const [isSignInOpen,setSignInOpen] = useState(false)
+  const [isSignInOpen, setSignInOpen] = useState(false)
 
   // Sign in modal.
-  const [isLoginOpen,setLoginOpen] = useState(false)
+  const [isLoginOpen, setLoginOpen] = useState(false)
 
   // Si se pulsa el boton de filtrado de Location.
   useEffect(() => {
@@ -211,71 +211,77 @@ function App() {
   }
 
   return (
-    <div>
- 
-      {/* -- Header-- */}
+
+    // Context.
+    <GlobalProvider>
+      
       <div>
-        <Header title = '8a.bro' refs = {
-          [
-            {key: 1,modalTitle : 'Sign in', isModalOpen : isSignInOpen, setIsModalOpen : setSignInOpen},
-            {key: 2, modalTitle : 'Log in', isModalOpen : isLoginOpen, setIsModalOpen : setLoginOpen}
-          ]
-          }/>
-      </div>
 
-      <div style={{ display: 'flex' }}>
-
-        {/* -- Form -- */}
-        <div style={{ flex: 1 }} className='form-container'>
-
-          <Form inputs={
-
-            fieldData.map((field, index) => {
-
-              if (field.type == "select") {
-
-                return <FormSelectInput key={index}
-                  selectOptions={field.options.map(((opt, index) => <option key={index} value={opt.value}>{opt.value} </option>))}
-                  onChange={field.onChange} />
-
-              } else {
-
-                return <FormTextInput key={index} name={field.name} />
-              }
-            }
-            )}
-            button={
-              <div>
-                <div className="button-group">
-                  <Button label="Name" parentMethod={(e) => addFilter(e, 'name', 'text')} />
-                  <Button label="Location"
-                    parentMethod={(e) => {
-
-                      e.preventDefault()
-                      setHandleLocationFilter(true)
-                    }
-                    } />
-                </div>
-                <div className="button-group">
-                  <Button label="Buscar" disabled={sectors.length === 0} />
-                </div>
-              </div>
-            }
-          />
+        {/* -- Header-- */}
+        <div>
+          <Header title='8a.bro' refs={
+            [
+              // TODO: USE THE CONTEXT BETWEEN THIS TWO MODALS.
+              { key: 1, modalTitle: 'Sign in', isModalOpen: isSignInOpen, setIsModalOpen: setSignInOpen },
+              { key: 2, modalTitle: 'Log in', isModalOpen: isLoginOpen, setIsModalOpen: setLoginOpen }
+            ]
+          } />
         </div>
 
-        {/* -- Optional Square panel.-- */}
-        <SquarePanel imageSrc={panelImage} text={panelText}></SquarePanel>
+        <div style={{ display: 'flex' }}>
 
-      </div>
+          {/* -- Form -- */}
+          <div style={{ flex: 1 }} className='form-container'>
 
-      {/* -- List grid -- */}
-      <div style={{ marginTop: '20px', marginBottom: '20px', backgroundColor: '#e0e0e0' }}>
-        <ListGrid
-          header={<Grid key={1} header={true} items={headersForListGrid} />}
-          grids={[<Grid key={1} items={items} />, <Grid key={2} items={items} />]} />
+            <Form inputs={
+
+              fieldData.map((field, index) => {
+
+                if (field.type == "select") {
+
+                  return <FormSelectInput key={index}
+                    selectOptions={field.options.map(((opt, index) => <option key={index} value={opt.value}>{opt.value} </option>))}
+                    onChange={field.onChange} />
+
+                } else {
+
+                  return <FormTextInput key={index} name={field.name} />
+                }
+              }
+              )}
+              button={
+                <div>
+                  <div className="button-group">
+                    <Button label="Name" parentMethod={(e) => addFilter(e, 'name', 'text')} />
+                    <Button label="Location"
+                      parentMethod={(e) => {
+
+                        e.preventDefault()
+                        setHandleLocationFilter(true)
+                      }
+                      } />
+                  </div>
+                  <div className="button-group">
+                    <Button label="Buscar" disabled={sectors.length === 0} />
+                  </div>
+                </div>
+              }
+            />
+          </div>
+
+          {/* -- Optional Square panel.-- */}
+          <SquarePanel imageSrc={panelImage} text={panelText}></SquarePanel>
+
+        </div>
+
+        {/* -- List grid -- */}
+        <div style={{ marginTop: '20px', marginBottom: '20px', backgroundColor: '#e0e0e0' }}>
+          <ListGrid
+            header={<Grid key={1} header={true} items={headersForListGrid} />}
+            grids={[<Grid key={1} items={items} />, <Grid key={2} items={items} />]} />
+        </div>
       </div>
-    </div>
+    </GlobalProvider>
   );
 }
 
