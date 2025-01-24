@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import './Modal.css'
-import { ZodValidableForm } from '../Form/Zod/ZodValidableForm';
+import './Modal.css';
+import { useGlobalContext } from '../../context/global.context';
 
 interface Props {
   
@@ -11,6 +11,9 @@ interface Props {
 }
 
 function Modal({ title, closeModal, signInForm}:Props) {
+
+  const {value} = useGlobalContext() 
+
   return (
     <div className="modal">
       <div className='centered-modal'>
@@ -19,7 +22,7 @@ function Modal({ title, closeModal, signInForm}:Props) {
           <h3>{title}</h3>
       </div>
       <div className="modal-content">
-          {signInForm}      
+          {value === "" ? signInForm : "Ya está usted logado: " + value}      
         </div>
         </div>
     </div>

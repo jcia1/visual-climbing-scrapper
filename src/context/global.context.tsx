@@ -2,13 +2,13 @@ import { createContext, ReactNode, useContext, useState } from "react"
 import React from "react"
 
 interface GlobalContextType {
-    value : number
-    setValue: React.Dispatch<React.SetStateAction<number>>
+    value : string
+    setValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 // Context
 export const GlobalContext = createContext<GlobalContextType>({
-    value: 0,
+    value: "",
     setValue: () => {}
 })
 
@@ -19,7 +19,7 @@ interface GlobalContextProps {
 
 export const GlobalProvider = ({children} : GlobalContextProps) => {
 
-    const [value, setValue] = useState<number>(0);
+    const [value, setValue] = useState<string>("");
 
     return (
         <GlobalContext.Provider value = {{value,setValue}}>{children}</GlobalContext.Provider>

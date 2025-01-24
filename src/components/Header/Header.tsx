@@ -22,8 +22,6 @@ const formIndex: keyToForm []  =
   {key:2, form: <LogInForm/>}
 ]
 
-
-
 export const Header = ({title,refs}: Props) => {
 
   const [render, setRender] =  useState<number>(undefined)
@@ -49,9 +47,9 @@ export const Header = ({title,refs}: Props) => {
       <div>
         <nav>
           <ul className="nav-list">
-            <li className="first-item"><a>{title}</a></li>
+            <li key = {0} className="first-item"><a>{title}</a></li>
             {
-              refs.map((ref,index) => <li className="nav-item">< a href={"#home"+index} onClick={(e) => 
+              refs.map((ref,index) => <li key={index+1} className="nav-item">< a href={"#home"+index} onClick={(e) => 
                 {
                   e.preventDefault();
                   setRender(index);

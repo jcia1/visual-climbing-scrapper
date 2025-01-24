@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const InputZodValidableForm = ({ name, control, label, type, error }: Props) => {
-    console.log(error);
 
     return (
         <div className='input-zod-validable-form'>
@@ -26,6 +25,9 @@ export const InputZodValidableForm = ({ name, control, label, type, error }: Pro
                         id={name}
                         type={type}
                         {...field}
+                        // If only add '' React doesnt enable to edit, and if only add field.value, 
+                        // throws an error because of the component changing from controled to uncontrolled.
+                        value={field.value || ''}
                         className={`form-control ${error ? "is-invalid" : ""}`}
                     />
                 )}

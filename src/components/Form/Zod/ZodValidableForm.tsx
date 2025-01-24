@@ -5,6 +5,8 @@ import { InputZodValidableForm } from "./InputZodValidableForm";
 import '../Form.css';
 import { Button } from "../../Button/Button";
 import { z, ZodSchema } from "zod";
+import { useGlobalContext } from "../../../context/global.context";
+import { SchemaGeneral } from "./SchemaGeneral";
 
 export interface InputData {
     name: string
@@ -12,28 +14,32 @@ export interface InputData {
     type: HTMLInputTypeAttribute
 
 }
-interface Props <T>{
+interface Props <T extends z.infer<typeof SchemaGeneral>>{
     inputs: InputData[]
     schema: ZodSchema<T>;
 }
 
-export const ZodValidableForm = <T,>({ schema, inputs }: Props<T>) => {
+export const ZodValidableForm = <T extends z.infer<typeof SchemaGeneral>,>({ schema, inputs }: Props<T>) => {
 
     type FormValues = z.infer<typeof schema>
 
+    const {value, setValue} = useGlobalContext() 
+    
     const { control, handleSubmit, formState: { errors, isDirty, dirtyFields } } = useForm<FormValues>({
         resolver: zodResolver(schema)
     });
 
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
-        console.log('Formulario enviado', data);
+    const onSubmit: SubmitHandler<FormValues> = (data: FormValues) => {
+        console.log(data.name)
+        setValue(data.name)
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="custom-form">
             {
-                inputs.map(input => {
+                inputs.map((input,index) => {
                     return <InputZodValidableForm
+                        key={index}
                         name = {input.name}
                         control={control}
                         label= {input.label}
